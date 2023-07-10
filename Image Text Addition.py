@@ -2,6 +2,7 @@ import cv2 as cv
 import numpy as np
 
 
+#Placement of text at some positions
 def txtt(img):
     txt = input("Enter the text you want to enter- ")
     coo = (0, 0)
@@ -29,6 +30,7 @@ def txtt(img):
     cv.putText(img=img, text = txt , org=coo, fontFace=cv.FONT_HERSHEY_TRIPLEX, fontScale=1, color=(45, 26, 239), thickness=3)
 
 
+#creating new image to add text
 def creat_newimg(old_img):
     new_img = []
     x = np.shape(old_img)
@@ -45,6 +47,8 @@ def creat_newimg(old_img):
     new_img = new_img.astype(np.uint8)
     return new_img
 
+
+#From new Image generated, place the text in the original image
 def add_text_man(old_img, new_img):
     txtt(new_img)
     x = np.shape(old_img)

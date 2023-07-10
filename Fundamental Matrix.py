@@ -16,6 +16,7 @@ all_1 = []
 h = []
 
 
+#To get new image coordinates for testing fundamental matrix from image 1
 def mouse_click_new(event, x, y, flags, param):
     global count_new1
     global point_matrix_new1
@@ -27,6 +28,7 @@ def mouse_click_new(event, x, y, flags, param):
         count_new1 += 1
 
 
+#To get new image coordinates for testing fundamental matrix from image 2
 def mouse_click_new2(event, x, y, flags, param):
     global count_new2
     global point_matrix_new2
@@ -38,6 +40,7 @@ def mouse_click_new2(event, x, y, flags, param):
         count_new2 += 1
 
 
+#To get image coordinates for making fundamental matrix from image 1
 def mouse_click1(event, x, y, flags, param):
     global count1
     global point_matrix1
@@ -49,6 +52,7 @@ def mouse_click1(event, x, y, flags, param):
         count1 += 1
 
 
+#To get image coordinates for making fundamental matrix from image 2
 def mouse_click2(event, x, y, flags, param):
     global count2
     global point_matrix2
@@ -60,6 +64,7 @@ def mouse_click2(event, x, y, flags, param):
         count2 += 1
 
 
+#Finding similar points
 def similar_points(img, img2, a):
     global point_matrix1
     global point_matrix2
@@ -72,6 +77,7 @@ def similar_points(img, img2, a):
         cv2.waitKey(0)
 
 
+#Fundamental Matrix
 def f_matrix(a, b):
     global all_1
     global h
@@ -89,6 +95,7 @@ def f_matrix(a, b):
     test(f)
 
 
+#initiating the program
 def ha(i1, i2, a):
     global point_matrix1
     global point_matrix2
@@ -100,6 +107,7 @@ def ha(i1, i2, a):
     f_matrix(point_matrix1, point_matrix2)
 
 
+#testing the accuracy of Fundamental Matrix
 def test(f):
     global point_matrix_new1
     global point_matrix_new2
@@ -115,8 +123,7 @@ def test(f):
         a = np.matmul(p1, f)
         b = np.matmul(a, p2)
         print(i,". {x1 ",p1, "x2: ",p2,"}x1T.F.x2 = ", b)
-    cv2.imwrite("C:/Users/aksha/Desktop/NewImage2.jpg", img)
-    cv2.imwrite("C:/Users/aksha/Desktop/NewImage3.jpg", img2)
+
 
 ha(img, img2, 1)
 cv2.destroyAllWindows()

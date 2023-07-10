@@ -15,7 +15,7 @@ count_new2 = 0
 all_1 = []
 h = []
 
-
+#To get image coordinates for testing homography
 def mouse_click_new(event, x, y, flags, param):
     global count_new1
     global point_matrix_new1
@@ -27,6 +27,7 @@ def mouse_click_new(event, x, y, flags, param):
         count_new1 += 1
 
 
+#To get image coordinates for generating homography from image 1
 def mouse_click1(event, x, y, flags, param):
     global count1
     global point_matrix1
@@ -38,6 +39,7 @@ def mouse_click1(event, x, y, flags, param):
         count1 += 1
 
 
+#To get image coordinates for generating homography from image 2
 def mouse_click2(event, x, y, flags, param):
     global count2
     global point_matrix2
@@ -49,6 +51,7 @@ def mouse_click2(event, x, y, flags, param):
         count2 += 1
 
 
+#Finding similar points
 def similar_points(img, img2, a):
     global point_matrix1
     global point_matrix2
@@ -61,6 +64,7 @@ def similar_points(img, img2, a):
         cv2.waitKey(0)
 
 
+#generating Image to Image homography matrix
 def h_graph_n(a, b):
     global all_1
     global h
@@ -78,18 +82,18 @@ def h_graph_n(a, b):
     h = h / h[2][2]
 
 
+#initiating the program
 def ha(i1, i2, a):
     global point_matrix1
     global point_matrix2
     similar_points(i1, i2, a)
     point_matrix1 = np.array(point_matrix1)
     point_matrix2 = np.array(point_matrix2)
-    cv2.imwrite("C:/Users/aksha/Desktop/NewImageA.jpg", img)
-    cv2.imwrite("C:/Users/aksha/Desktop/NewImageB1.jpg", img2)
     h_graph_n(point_matrix1, point_matrix2)
     new_map(h)
 
 
+#testing the homography matrix
 def new_map(h):
     global count_new2
     cv2.imshow('image', img)
@@ -108,8 +112,7 @@ def new_map(h):
         cv2.imshow('image', img2)
         count_new2 += 1
         cv2.waitKey(0)
-    cv2.imwrite("C:/Users/aksha/Desktop/NewImage.jpg", img)
-    cv2.imwrite("C:/Users/aksha/Desktop/NewImage1.jpg", img2)
+
 
 ha(img, img2, 1)
 cv2.destroyAllWindows()

@@ -7,6 +7,7 @@ point_matrix2 = []
 count1 = 0
 all = []
 
+#To get image coordinates as we select some 3D coordinate
 def mouse_click(event, x, y, flags, param):
     global count1
     if event == cv2.EVENT_LBUTTONDOWN:
@@ -17,6 +18,7 @@ def mouse_click(event, x, y, flags, param):
         count1 += 1
 
 
+#initiating the matrix
 def initiate(i1):
     global point_matrix1
     cv2.imshow('image', img)
@@ -29,6 +31,7 @@ def initiate(i1):
     Three_D(point_matrix1, point_matrix2)
 
 
+#creating camera calibration matrix
 def Three_D(a, b):
     global P
     global all
@@ -49,6 +52,7 @@ def Three_D(a, b):
     test(P)
 
 
+#testing the camera calibration matrix
 def test(P):
     X, Y, Z = input("Enter a 3D point: ").split(',')
     a = [int(X), int(Y), int(Z), 1]
